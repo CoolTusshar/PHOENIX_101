@@ -1,0 +1,35 @@
+{% extends "posts/base.html" %}
+{% block extrahead %}
+
+    <meta charset="UTF-8">
+    <title>{{form.title}}</title>
+{% endblock %}
+{% block content %}
+<h1>TELL US MORE</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+<button type="submit" class="waves-effect waves-light btn">Submit</button>
+</form>
+<br><br><br>
+
+  <form action="#">
+    <p>
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1">Red</label>
+    </p>
+    <p>
+      <input name="group1" type="radio" id="test2" />
+      <label for="test2">Yellow</label>
+    </p>
+    <p>
+      <input class="with-gap" name="group1" type="radio" id="test3"  />
+      <label>Green</label>
+    </p>
+    <p>
+      <input name="group1" type="radio" id="test4" disabled="disabled" />
+      <label for="test4">Brown</label>
+    </p>
+  </form>
+
+{% endblock %}
