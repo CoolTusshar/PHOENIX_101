@@ -1,19 +1,19 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Feedback,Question_List
-from .choices import INSTITUTION_CHOICES,USER_CHOICES
+from .models import Feedback
+from .choices import INSTITUTION_CHOICES,USER_CHOICES,RADIO_CHOICES
 
-# class SignUpForm(UserCreationForm):
-#     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-#     last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-#     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-#
-#     class Meta:
-#         model = User
-#         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
-#
-#
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    user_type = forms.ChoiceField(choices=USER_CHOICES, widget = forms.RadioSelect)
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'password1', 'password2','user_type', )
+
+
 # class PostForm(forms.ModelForm):
 #     class Meta:
 #         content = forms.CharField(widget=PagedownWidget)
@@ -38,24 +38,20 @@ from .choices import INSTITUTION_CHOICES,USER_CHOICES
 #         ]
 
 class Feedback_Form_1(forms.ModelForm):
-    user_type = forms.ChoiceField(choices=USER_CHOICES, widget=forms.RadioSelect)
-    user_id = forms.IntegerField(required=True)
-    answer_0 = forms.IntegerField()
-    answer_1 = forms.IntegerField()
-    answer_2 = forms.IntegerField()
-    answer_3 = forms.IntegerField()
-    answer_4 = forms.IntegerField()
-    answer_5 = forms.IntegerField()
-    answer_6 = forms.IntegerField()
-    answer_7 = forms.IntegerField()
-    answer_8 = forms.IntegerField()
-    answer_9 = forms.IntegerField()
+    answer_0 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_1 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_2 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_3 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_4 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_5 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_6 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_7 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_8 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
+    answer_9 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)
 
     class Meta:
         model = Feedback
         fields = [
-            'user_type',
-            'user_id',
             'answer_0',
             'answer_1',
             'answer_2',
@@ -67,3 +63,8 @@ class Feedback_Form_1(forms.ModelForm):
             'answer_8',
             'answer_9'
                   ]
+class f_form_0(forms.ModelForm):
+    user_name = forms.CharField(max_length=10)
+    class Meta:
+        model = Feedback
+        fields = [ 'user_name']

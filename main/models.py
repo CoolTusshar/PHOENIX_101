@@ -14,25 +14,17 @@ class Institution(models.Model):
 class Faculty(models.Model):
     faculty_id = models.IntegerField(primary_key=True)
     faculty_name = models.CharField(max_length=140,null=False,default="XYZ")
-    faculty_total_rating = models.IntegerField()
-    faculty_total_raters = models.IntegerField()
     faculty_contact = models.BigIntegerField()
     faculty_institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
 
 class Student(models.Model):
     student_id = models.IntegerField(primary_key=True)
     student_name = models.CharField(max_length=140,null=False,default="XYZ")
-    student_total_rating = models.IntegerField()
-    student_total_raters = models.IntegerField()
     student_contact = models.BigIntegerField()
     student_institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
 
-class  Question_List(models.Model):
-    type = models.IntegerField()
-    qn = models.IntegerField()
-    que = models.TextField(max_length=200)
 
 class Feedback(models.Model):
     user_type = models.IntegerField(choices=USER_CHOICES,default=3)
-    user_id = models.IntegerField()
+    user_name = models.CharField(max_length=10,primary_key=True,default='tushar')
     answer_list= models.TextField()

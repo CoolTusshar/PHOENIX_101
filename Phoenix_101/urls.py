@@ -21,6 +21,7 @@ from main import urls
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('main.urls')),
-    # url(r'^login/$', auth_views.login, {'template_name': 'main/login.html'}, name='login'),
-    # url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
+    url(r'^login/$', auth_views.login, {'template_name': 'main/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
 ]

@@ -1,0 +1,50 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+{% block headtitle %}Feedback{% endblock %}
+{% block head_extra %}
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+     {% load material_form %}
+{% endblock %}
+
+{% block content %}
+
+
+ <form method="post">
+        {% csrf_token %}
+                    {% if not user.is_authenticated  %}
+                    <p>Enter your mobile number</p>
+                    {% else %}
+                        <p>Enter your user id</p>
+                    {{ form_0.as_p }}
+                    {% endif %}
+
+
+                    {% form %}
+                    <!-- {% part field label %} {{ q_list.0 }} {% endpart %} -->
+                    {% attr form.answer_0 'group' class append %} inline {% endattr %}
+                    {{ q_list.1 }}<br>
+                    {% attr form.answer_1 'group' class append %} inline {% endattr %}
+                    {{ q_list.2 }}<br>
+                    {% attr form.answer_2 'group' class append %} inline {% endattr %}
+                    {{ q_list.3 }}<br>
+                    {% attr form.answer_3 'group' class append %} inline {% endattr %}
+                    {{ q_list.4 }}<br>
+                    {% attr form.answer_4 'group' class append %} inline {% endattr %}
+                    {{ q_list.5 }}<br>
+                    {% attr form.answer_5 'group' class append %} inline {% endattr %}
+                    {{ q_list.6 }}<br>
+                    {% attr form.answer_6 'group' class append %} inline {% endattr %}
+                    {{ q_list.7 }}<br>
+                    {% attr form.answer_7 'group' class append %} inline {% endattr %}
+                    {{ q_list.8 }}<br>
+                    {% attr form.answer_8 'group' class append %} inline {% endattr %}
+                    {{ q_list.9 }}<br>
+                    {% attr form.answer_9 'group' class append %} inline {% endattr %}
+                    {% endform %}
+                    <br>
+
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+ </form>
+{% endblock %}
