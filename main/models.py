@@ -6,7 +6,6 @@ from .choices import INSTITUTION_CHOICES,USER_CHOICES
 class Institution(models.Model):
     institution_id = models.IntegerField(primary_key=True)
     institution_name = models.CharField(max_length=140,null=False,default="ABCD")
-    institution_type = models.IntegerField(choices=INSTITUTION_CHOICES)
     institution_address = models.CharField(max_length=150,null=False,default="ALPHA")
     institution_total_rating = models.IntegerField()
     institution_total_raters = models.IntegerField()
