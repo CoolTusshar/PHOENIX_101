@@ -1,17 +1,16 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Feedback
-from .choices import USER_CHOICES,RADIO_CHOICES
+from .models import Feedback,Profile
+from .choices import USER_CHOICES,RADIO_CHOICES,SCHOOL_CHOICES
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
     last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    user_type = forms.ChoiceField(choices=USER_CHOICES, widget = forms.RadioSelect)
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'password1', 'password2','user_type', )
+        fields = ('username', 'first_name', 'last_name', 'password1', 'password2', )
 
 
 # class PostForm(forms.ModelForm):
@@ -24,18 +23,16 @@ class SignUpForm(UserCreationForm):
 #             "content",
 #         ]
 #
-# class ProfileForm(forms.ModelForm):
-#     gender = forms.ChoiceField(choices=GENDER_CHOICES, widget=forms.RadioSelect )
-#     bio = forms.CharField(max_length=140)
-#     profilePic = forms.ImageField()
-#
-#     class Meta:
-#         model = Profile
-#         fields = [
-#             "gender",
-#             "bio",
-#             "profilePic",
-#         ]
+class ProfileForm(forms.ModelForm):
+    school = forms.ChoiceField(choices=SCHOOL_CHOICES, widget=forms.RadioSelect)
+    user_type = forms.ChoiceField(choices=USER_CHOICES,widget=forms.RadioSelect)
+
+    class Meta:
+        model = Profile
+        fields = [
+            "school",
+            "user_type",
+        ]
 
 class Feedback_Form_1(forms.ModelForm):
     answer_0 = forms.ChoiceField(choices=RADIO_CHOICES, widget= forms.RadioSelect)

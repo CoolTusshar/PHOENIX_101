@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import Feedback_Form_1,SignUpForm,f_form_0
-from .models import Feedback
+from .forms import Feedback_Form_1,SignUpForm,f_form_0,ProfileForm
+from .models import Feedback,Institution,Profile
 from .questions import ANONYMUS_QUESTIONS,FACULTY_QUESTIONS,STUDENT_QUESTIONS
 from django.contrib.auth import login, authenticate
 import json
@@ -12,16 +12,25 @@ def home(request):
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        if form.is_valid():
+        form1 = ProfileForm(request.POST)
+        if form.is_valid() and form1.is_valid():
             form.save()
+            form1.save()
+            stu_obj = Profile()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            id = form1.cleaned_data.get('school')
+            stu_obj.school = Institution.objects.get(institution_id = id)
+            stu_obj.user = request.user
+            stu_obj.type = form1.cleaned_data.get('user_type')
+            stu_obj.save()
             return redirect('home')
     else:
-        form = SignUpForm()
-    return render(request, 'main/signup.html', {'form': form})
+        form = SignUpForm(request.POST or None)
+        form1 = ProfileForm(request.POST or None)
+    return render(request, 'main/signup.html', {'form': form,'form1': form1})
 
 
 def feedback(request):

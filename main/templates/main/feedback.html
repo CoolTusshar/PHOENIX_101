@@ -6,6 +6,11 @@
     <script src="{% static 'material/js/jquery.js' %}"></script>
     {% include 'material/includes/material_js.html' %}
      {% load material_form %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+              <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.0/mark.min.js"></script>
+                 <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+
 {% endblock %}
 
 {% block content %}
@@ -21,31 +26,50 @@
                     {% endif %}
                     {{ form_0.as_p }}
                     {% endform %}
-
+                    <h4>Rate the following on a scale of 10</h4>
                     {% form %}
                      {% part form.answer_0 label %} {{ q_list.0 }} {% endpart %}
-                    {% attr form.answer_0 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_0 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_1 label %} {{ q_list.1 }} {% endpart %}
-                    {% attr form.answer_1 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_1 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_2 label %} {{ q_list.2 }} {% endpart %}
-                    {% attr form.answer_2 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_2 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_3 label %} {{ q_list.3 }} {% endpart %}
-                    {% attr form.answer_3 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_3 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_4 label %} {{ q_list.4 }} {% endpart %}
-                    {% attr form.answer_4 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_4 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_5 label %} {{ q_list.5 }} {% endpart %}
-                    {% attr form.answer_5 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_5 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_6 label %} {{ q_list.6 }} {% endpart %}
-                    {% attr form.answer_6 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_6 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_7 label %} {{ q_list.7 }} {% endpart %}
-                    {% attr form.answer_7 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_7 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_8 label %} {{ q_list.8 }} {% endpart %}
-                    {% attr form.answer_8 'group' class append %} inline {% endattr %}
+                    {% attr form.answer_8 'group' class append %} inline {% endattr %}<br>
+                    <div class="divider"></div>
+
                     {% part form.answer_9 label %} {{ q_list.9 }} {% endpart %}
-                    {% attr form.answer_9 'group' class append %} inline {% endattr %}
-                    {% endform %}
-                    <br>
+                    {% attr form.answer_9 'group' class append %} inline {% endattr %}<br>
+                    {% endform %}<br>
+
 
         <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
  </form>
+<br><br>
 {% endblock %}
